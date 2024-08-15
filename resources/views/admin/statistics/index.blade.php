@@ -18,7 +18,7 @@
                 @forelse ($statistics as $statistic)
                     <div class="flex flex-row items-center justify-between item-card">
                         <div class="flex flex-row items-center gap-x-3">
-                            <img src="{{ Storage::url($statistic->icon) }}" alt=""
+                            <img src="{{ Storage::url($statistic->icon) }}" alt="statistics"
                                 class="rounded-2xl object-cover w-[90px] h-[90px]">
                             <div class="flex flex-col">
                                 <h3 class="text-xl font-bold text-indigo-950">{{ $statistic->name }}</h3>
@@ -30,10 +30,13 @@
                             </h3>
                         </div>
                         <div class="flex-row items-center hidden md:flex gap-x-3">
-                            <a href=" " class="px-6 py-4 font-bold text-white bg-indigo-700 rounded-full">
+                            <a href="{{ route('admin.statistics.edit', $statistic) }}"
+                                class="px-6 py-4 font-bold text-white bg-indigo-700 rounded-full">
                                 Edit
                             </a>
-                            <form action=" " method="POST">
+                            <form action="{{ route('admin.statistics.destroy', $statistic) }}" method="POST">
+                                @csrf
+                                @method('DELETE')
                                 <button type="submit" class="px-6 py-4 font-bold text-white bg-red-700 rounded-full">
                                     Delete
                                 </button>
