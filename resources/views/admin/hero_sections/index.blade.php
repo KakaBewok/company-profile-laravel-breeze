@@ -26,14 +26,15 @@
                         </div>
                         <div class="flex-col hidden md:flex">
                             <p class="text-sm text-slate-500">Date</p>
-                            <h3 class="text-xl font-bold text-indigo-950">{{ $hero_section->created_at }}</h3>
+                            <h3 class="text-xl font-bold text-indigo-950">
+                                {{ $hero_section->created_at->format('M d, Y') }}</h3>
                         </div>
                         <div class="flex-row items-center hidden md:flex gap-x-3">
-                            <a href="{{ route('admin.abouts.edit', $hero_section) }}"
+                            <a href="{{ route('admin.hero_sections.edit', $hero_section) }}"
                                 class="px-6 py-4 font-bold text-white bg-indigo-700 rounded-full">
                                 Edit
                             </a>
-                            <form action="{{ route('admin.abouts.destroy', $hero_section) }}" method="POST">
+                            <form action="{{ route('admin.hero_sections.destroy', $hero_section) }}" method="POST">
                                 @csrf
                                 @method('DELETE')
                                 <button type="submit" class="px-6 py-4 font-bold text-white bg-red-700 rounded-full">
