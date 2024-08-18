@@ -4,7 +4,7 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class StoreApointmentRequest extends FormRequest
+class StoreAppointmentRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -28,7 +28,7 @@ class StoreApointmentRequest extends FormRequest
             'email' => ['required', 'string', 'max:255'],
             'product_id' => ['required', 'integer'],
             'budget' => ['required', 'integer'],
-            'brief' => ['required', 'string','max:65535'],
+            'brief' => ['required', 'string', 'max:65535'],
         ];
     }
 }
