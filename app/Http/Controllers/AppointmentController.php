@@ -69,6 +69,10 @@ class AppointmentController extends Controller
      */
     public function destroy(Appointment $appointment)
     {
-        //
+        DB::transaction(function () use ($appointment) {
+            $appointment->delete();
+        });
+
+        return redirect()->route('admin.appointments.index');
     }
 }

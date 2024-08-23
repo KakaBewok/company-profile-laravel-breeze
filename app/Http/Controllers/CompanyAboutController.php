@@ -39,7 +39,16 @@ class CompanyAboutController extends Controller
                 $validated['thumbnail'] = $thumbnailPath;
             }
 
-            CompanyAbout::create($validated);
+            $newAbout = CompanyAbout::create($validated);
+
+            //insert keypoiny melalui model About
+            if (!empty($validated['keypoints'])) {
+                foreach ($validated['keypoints'] as $keypoint) {
+                    $newAbout->keypoints()->create([
+                        'keypoint' => $keypoint
+                    ]);
+                }
+            }
         });
 
         return redirect()->route('admin.abouts.index');
@@ -72,8 +81,12 @@ class CompanyAboutController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(CompanyAbout $companyAbout)
+    public function destroy(CompanyAbout $about)
     {
-        //
+        DB::transaction(function () use ($about) {
+            $about->delete();
+        });
+
+        return redirect()->route('admin.abouts.index');
     }
 }

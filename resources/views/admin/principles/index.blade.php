@@ -21,13 +21,13 @@
                             <img src="{{ Storage::url($principle->thumbnail) }}" alt="principle"
                                 class="rounded-2xl object-cover w-[90px] h-[90px]">
                             <div class="flex flex-col">
-                                <h3 class="text-xl font-bold text-indigo-950">{{ $principle->$name }}</h3>
+                                <h3 class="text-xl font-bold text-indigo-950">{{ $principle->name }}</h3>
                             </div>
                         </div>
                         <div class="flex-col hidden md:flex">
                             <p class="text-sm text-slate-500">Date</p>
                             <h3 class="text-xl font-bold text-indigo-950">
-                                {{ $principle->$created_at->format('M d, Y') }}</h3>
+                                {{ $principle->created_at->format('M d, Y') }}</h3>
                         </div>
                         <div class="flex-row items-center hidden md:flex gap-x-3">
                             <a href="{{ route('admin.principles.edit', $principle) }}"

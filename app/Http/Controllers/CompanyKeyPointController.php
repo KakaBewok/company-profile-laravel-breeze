@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\CompanyKeyPoint;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class CompanyKeyPointController extends Controller
 {
@@ -58,8 +59,10 @@ class CompanyKeyPointController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(CompanyKeyPoint $companyKeyPoint)
+    public function destroy(CompanyKeyPoint $keyPoint)
     {
-        //
+        DB::transaction(function () use ($keyPoint) {
+            $keyPoint->delete();
+        });
     }
 }
