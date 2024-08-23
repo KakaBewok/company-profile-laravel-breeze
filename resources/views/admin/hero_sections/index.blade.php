@@ -27,7 +27,7 @@
                         <div class="flex-col hidden md:flex">
                             <p class="text-sm text-slate-500">Date</p>
                             <h3 class="text-xl font-bold text-indigo-950">
-                                {{ $hero_section->created_at->format('M d, Y') }}</h3>
+                                {{ $hero_section->created_at }}</h3>
                         </div>
                         <div class="flex-row items-center hidden md:flex gap-x-3">
                             <a href="{{ route('admin.hero_sections.edit', $hero_section) }}"
