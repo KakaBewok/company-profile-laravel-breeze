@@ -136,163 +136,78 @@
             <a href="" class="bg-cp-black p-[14px_20px] w-fit rounded-xl font-bold text-white">Explore More</a>
         </div>
         <div class="flex flex-wrap items-center gap-[30px] justify-center">
-            <div
-                class="card w-[356.67px] flex flex-col bg-white border border-[#E8EAF2] rounded-[20px] gap-[30px] overflow-hidden hover:border-cp-dark-blue transition-all duration-300">
-                <div class="thumbnail h-[200px] flex shrink-0 overflow-hidden">
-                    <img src="{{ asset('assets/thumbnails/cover1.jpg') }}"
-                        class="object-cover object-center w-full h-full" alt="thumbnails">
-                </div>
-                <div class="flex flex-col p-[0_30px_30px_30px] gap-5">
-                    <div class="w-[55px] h-[55px] flex shrink-0 overflow-hidden">
-                        <img src="{{ asset('assets/icons/note-favorite.svg') }}" class="object-contain w-full h-full"
-                            alt="icon">
+
+            @forelse ($principles as $principle)
+                <div
+                    class="card w-[356.67px] flex flex-col bg-white border border-[#E8EAF2] rounded-[20px] gap-[30px] overflow-hidden hover:border-cp-dark-blue transition-all duration-300">
+                    <div class="thumbnail h-[200px] flex shrink-0 overflow-hidden">
+                        <img src="{{ Storage::url($principle->thumbnail) }}"
+                            class="object-cover object-center w-full h-full" alt="thumbnails">
                     </div>
-                    <div class="flex flex-col gap-1">
-                        <p class="title font-bold text-xl leading-[30px]">Prioritize Trust</p>
-                        <p class="leading-[30px] text-cp-light-grey">Shayna is an award-winning ametia construction
-                            company with lorem</p>
+                    <div class="flex flex-col p-[0_30px_30px_30px] gap-5">
+                        <div class="w-[55px] h-[55px] flex shrink-0 overflow-hidden">
+                            <img src="{{ Storage::url($principle->icon) }}" class="object-contain w-full h-full"
+                                alt="icon">
+                        </div>
+                        <div class="flex flex-col gap-1">
+                            <p class="title font-bold text-xl leading-[30px]">{{ $principle->name }}</p>
+                            <p class="leading-[30px] text-cp-light-grey">{{ $principle->subtitle }}</p>
+                        </div>
+                        <a href="" class="font-semibold text-cp-dark-blue">Learn More</a>
                     </div>
-                    <a href="" class="font-semibold text-cp-dark-blue">Learn More</a>
                 </div>
-            </div>
-            <div
-                class="card w-[356.67px] flex flex-col bg-white border border-[#E8EAF2] rounded-[20px] gap-[30px] overflow-hidden hover:border-cp-dark-blue transition-all duration-300">
-                <div class="thumbnail h-[200px] flex shrink-0 overflow-hidden">
-                    <img src="{{ asset('assets/thumbnails/cover2.jpg') }}"
-                        class="object-cover object-center w-full h-full" alt="thumbnails">
-                </div>
-                <div class="flex flex-col p-[0_30px_30px_30px] gap-5">
-                    <div class="w-[55px] h-[55px] flex shrink-0 overflow-hidden">
-                        <img src="{{ asset('assets/icons/user-octagon.svg') }}" class="object-contain w-full h-full"
-                            alt="icon">
-                    </div>
-                    <div class="flex flex-col gap-1">
-                        <p class="title font-bold text-xl leading-[30px]">Professional People</p>
-                        <p class="leading-[30px] text-cp-light-grey">Shayna is an award-winning ametia construction
-                            company with lorem</p>
-                    </div>
-                    <a href="" class="font-semibold text-cp-dark-blue">Learn More</a>
-                </div>
-            </div>
-            <div
-                class="card w-[356.67px] flex flex-col bg-white border border-[#E8EAF2] rounded-[20px] gap-[30px] overflow-hidden hover:border-cp-dark-blue transition-all duration-300">
-                <div class="thumbnail h-[200px] flex shrink-0 overflow-hidden">
-                    <img src="{{ asset('assets/thumbnails/cover3.jpg') }}"
-                        class="object-cover object-center w-full h-full" alt="thumbnails">
-                </div>
-                <div class="flex flex-col p-[0_30px_30px_30px] gap-5">
-                    <div class="w-[55px] h-[55px] flex shrink-0 overflow-hidden">
-                        <img src="{{ asset('assets/icons/building-4.svg') }}" class="object-contain w-full h-full"
-                            alt="icon">
-                    </div>
-                    <div class="flex flex-col gap-1">
-                        <p class="title font-bold text-xl leading-[30px]">Eco Friendly Concept</p>
-                        <p class="leading-[30px] text-cp-light-grey">Shayna is an award-winning ametia construction
-                            company with lorem</p>
-                    </div>
-                    <a href="" class="font-semibold text-cp-dark-blue">Learn More</a>
-                </div>
-            </div>
+            @empty
+                <p>Data not found.</p>
+            @endforelse
+
         </div>
     </div>
     <div id="Stats" class="w-full mt-20 bg-cp-black">
         <div class="container max-w-[1000px] mx-auto py-10">
             <div class="flex flex-wrap items-center justify-between p-[10px]">
-                <div class="card w-[200px] flex flex-col items-center gap-[10px] text-center">
-                    <div class="w-[55px] h-[55px] flex shrink-0 overflow-hidden">
-                        <img src="{{ asset('assets/icons/cup.svg') }}" class="object-contain w-full h-full"
-                            alt="icon">
+
+                @forelse ($statistics as $statistic)
+                    <div class="card w-[200px] flex flex-col items-center gap-[10px] text-center">
+                        <div class="w-[55px] h-[55px] flex shrink-0 overflow-hidden">
+                            <img src="{{ Storage::url($statistic->icon) }}" class="object-contain w-full h-full"
+                                alt="icon">
+                        </div>
+                        <p class="text-cp-pale-orange font-bold text-4xl leading-[54px]">{{ $statistic->goal }}</p>
+                        <p class="text-cp-light-grey">{{ $statistic->name }}</p>
                     </div>
-                    <p class="text-cp-pale-orange font-bold text-4xl leading-[54px]">189.409</p>
-                    <p class="text-cp-light-grey">Award-winning Buildings</p>
-                </div>
-                <div class="card w-[200px] flex flex-col items-center gap-[10px] text-center">
-                    <div class="w-[55px] h-[55px] flex shrink-0 overflow-hidden">
-                        <img src="{{ asset('assets/icons/buildings.svg') }}" class="object-contain w-full h-full"
-                            alt="icon">
-                    </div>
-                    <p class="text-cp-pale-orange font-bold text-4xl leading-[54px]">198</p>
-                    <p class="text-cp-light-grey">HQ Worldwide</p>
-                </div>
-                <div class="card w-[200px] flex flex-col items-center gap-[10px] text-center">
-                    <div class="w-[55px] h-[55px] flex shrink-0 overflow-hidden">
-                        <img src="{{ asset('assets/icons/status-up.svg') }}" class="object-contain w-full h-full"
-                            alt="icon">
-                    </div>
-                    <p class="text-cp-pale-orange font-bold text-4xl leading-[54px]">$512bn</p>
-                    <p class="text-cp-light-grey">Success Investments</p>
-                </div>
-                <div class="card w-[200px] flex flex-col items-center gap-[10px] text-center">
-                    <div class="w-[55px] h-[55px] flex shrink-0 overflow-hidden">
-                        <img src="{{ asset('assets/icons/star.svg') }}" class="object-contain w-full h-full"
-                            alt="icon">
-                    </div>
-                    <p class="text-cp-pale-orange font-bold text-4xl leading-[54px]">4.9/5</p>
-                    <p class="text-cp-light-grey">Honest Reviews</p>
-                </div>
+                @empty
+                    <p>Data not found.</p>
+                @endforelse
+
             </div>
         </div>
     </div>
     <div id="Products" class="container max-w-[1130px] mx-auto flex flex-col gap-20 mt-20">
-        <div class="product flex flex-wrap justify-center items-center gap-[60px] even:flex-row-reverse">
-            <div class="w-[470px] h-[550px] flex shrink-0 overflow-hidden">
-                <img src="{{ asset('assets/thumbnails/product cover one.png') }}" class="object-contain w-full h-full"
-                    alt="thumbnail">
-            </div>
-            <div class="flex flex-col gap-[30px] py-[50px] h-fit max-w-[500px]">
-                <p
-                    class="badge w-fit bg-cp-pale-blue text-cp-light-blue p-[8px_16px] rounded-full uppercase font-bold text-sm">
-                    WORLD TRADE CENTER</p>
-                <div class="flex flex-col gap-[10px]">
-                    <h2 class="font-bold text-4xl leading-[45px]">Office Integrated with Biggest Data Server Center
-                    </h2>
-                    <p class="leading-[30px] text-cp-light-grey">Lorem ipsum angga’s framework researching amet dolor
-                        metrics and perfomance burning rate random says.</p>
+
+        @forelse ($products as $product)
+            <div class="product flex flex-wrap justify-center items-center gap-[60px] even:flex-row-reverse">
+                <div class="w-[470px] h-[550px] flex shrink-0 overflow-hidden">
+                    <img src="{{ Storage::url($product->thumbnail) }}" class="object-contain w-full h-full"
+                        alt="thumbnail">
                 </div>
-                <a href=""
-                    class="bg-cp-dark-blue p-[14px_20px] w-fit rounded-xl hover:shadow-[0_12px_30px_0_#312ECB66] transition-all duration-300 font-bold text-white">Book
-                    Appointment</a>
-            </div>
-        </div>
-        <div class="product flex flex-wrap justify-center items-center gap-[60px] even:flex-row-reverse">
-            <div class="w-[470px] h-[550px] flex shrink-0 overflow-hidden">
-                <img src="{{ asset('assets/thumbnails/product cover two.png') }}" class="object-contain w-full h-full"
-                    alt="thumbnail">
-            </div>
-            <div class="flex flex-col gap-[30px] py-[50px] h-fit max-w-[500px]">
-                <p
-                    class="badge w-fit bg-cp-pale-blue text-cp-light-blue p-[8px_16px] rounded-full uppercase font-bold text-sm">
-                    FAMILY HARMONY</p>
-                <div class="flex flex-col gap-[10px]">
-                    <h2 class="font-bold text-4xl leading-[45px]">Beautiful Theme Park Family and Kids Friendly</h2>
-                    <p class="leading-[30px] text-cp-light-grey">Lorem ipsum angga’s framework researching amet dolor
-                        metrics and perfomance burning rate random says.</p>
+                <div class="flex flex-col gap-[30px] py-[50px] h-fit max-w-[500px]">
+                    <p
+                        class="badge w-fit bg-cp-pale-blue text-cp-light-blue p-[8px_16px] rounded-full uppercase font-bold text-sm">
+                        {{ $product->tagline }}</p>
+                    <div class="flex flex-col gap-[10px]">
+                        <h2 class="font-bold text-4xl leading-[45px]"> {{ $product->name }}
+                        </h2>
+                        <p class="leading-[30px] text-cp-light-grey"> {{ $product->about }}</p>
+                    </div>
+                    <a href=""
+                        class="bg-cp-dark-blue p-[14px_20px] w-fit rounded-xl hover:shadow-[0_12px_30px_0_#312ECB66] transition-all duration-300 font-bold text-white">Book
+                        Appointment</a>
                 </div>
-                <a href=""
-                    class="bg-cp-dark-blue p-[14px_20px] w-fit rounded-xl hover:shadow-[0_12px_30px_0_#312ECB66] transition-all duration-300 font-bold text-white">Book
-                    Appointment</a>
             </div>
-        </div>
-        <div class="product flex flex-wrap justify-center items-center gap-[60px] even:flex-row-reverse">
-            <div class="w-[470px] h-[550px] flex shrink-0 overflow-hidden">
-                <img src="{{ asset('assets/thumbnails/product cover three.png') }}" class="object-contain w-full h-full"
-                    alt="thumbnail">
-            </div>
-            <div class="flex flex-col gap-[30px] py-[50px] h-fit max-w-[500px]">
-                <p
-                    class="badge w-fit bg-cp-pale-blue text-cp-light-blue p-[8px_16px] rounded-full uppercase font-bold text-sm">
-                    ECO-FRIENDLY SPACE</p>
-                <div class="flex flex-col gap-[10px]">
-                    <h2 class="font-bold text-4xl leading-[45px]">Public City Center Park with Super Mall & Airport
-                    </h2>
-                    <p class="leading-[30px] text-cp-light-grey">Lorem ipsum angga’s framework researching amet dolor
-                        metrics and perfomance burning rate random says.</p>
-                </div>
-                <a href=""
-                    class="bg-cp-dark-blue p-[14px_20px] w-fit rounded-xl hover:shadow-[0_12px_30px_0_#312ECB66] transition-all duration-300 font-bold text-white">Book
-                    Appointment</a>
-            </div>
-        </div>
+        @empty
+            <p>Data not found.</p>
+        @endforelse
+
     </div>
     <div id="Teams" class="bg-[#F6F7FA] w-full py-20 px-[10px] mt-20">
         <div class="container max-w-[1130px] mx-auto flex flex-col gap-[30px] items-center">
