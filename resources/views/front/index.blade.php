@@ -171,7 +171,7 @@
                         </h2>
                         <p class="leading-[30px] text-cp-light-grey"> {{ $product->about }}</p>
                     </div>
-                    <a href=""
+                    <a href="{{ route('front.appointment') }}"
                         class="bg-cp-dark-blue p-[14px_20px] w-fit rounded-xl hover:shadow-[0_12px_30px_0_#312ECB66] transition-all duration-300 font-bold text-white">Book
                         Appointment</a>
                 </div>
@@ -363,7 +363,8 @@
                     <div class="flex flex-col gap-[10px]">
                         <h2 class="font-bold text-4xl leading-[45px]">Frequently Asked Questions</h2>
                     </div>
-                    <a href="contact.html" class="p-5 font-bold text-white bg-cp-black rounded-xl w-fit">Contact
+                    <a href="{{ route('front.appointment') }}"
+                        class="p-5 font-bold text-white bg-cp-black rounded-xl w-fit">Contact
                         Us</a>
                 </div>
                 <div class="flex flex-col gap-[30px] sm:w-[603px] shrink-0">
@@ -445,7 +446,7 @@
                             alt="logo">
                     </div>
                     <div class="flex flex-col">
-                        <p id="CompanyName" class="font-extrabold text-xl leading-[30px] text-white">ShaynaComp</p>
+                        <p id="CompanyName" class="font-extrabold text-xl leading-[30px] text-white">Noprizal</p>
                         <p id="CompanyTagline" class="text-sm text-cp-light-grey">Build Futuristic Dreams</p>
                     </div>
                 </div>
@@ -513,7 +514,7 @@
             </div>
         </div>
         <div class="absolute -bottom-[135px] w-full">
-            <p class="font-extrabold text-[250px] leading-[375px] text-center text-white opacity-5">SHAYNA</p>
+            <p class="font-extrabold text-[250px] leading-[375px] text-center text-white opacity-5">RIZAL</p>
         </div>
     </footer>
     <div id="video-modal" tabindex="-1" aria-hidden="true"

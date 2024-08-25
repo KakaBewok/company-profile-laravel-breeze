@@ -17,6 +17,8 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', [FrontController::class, 'index'])->name('front.index');
 Route::get('/team', [FrontController::class, 'team'])->name('front.team');
 Route::get('/about', [FrontController::class, 'about'])->name('front.about');
+Route::get('/appointment', [FrontController::class, 'appointment'])->name('front.appointment');
+Route::post('/appointment/store', [FrontController::class, 'appointmentStore'])->name('front.appointment_store');
 
 // cms admin
 Route::get('/dashboard', function () {

@@ -14,7 +14,7 @@
                 @forelse ($appointments as $appointment)
                     <div class="flex flex-row items-center justify-between item-card">
                         <div class="flex flex-row items-center gap-x-3">
-                            <img src="{{ Storage::url($appointment) }}" alt="appointment"
+                            <img src="{{ Storage::url($appointment->product->thumbnail) }}" alt="appointment"
                                 class="rounded-2xl object-cover w-[90px] h-[90px]">
                             <div class="flex flex-col">
                                 <h3 class="text-xl font-bold text-indigo-950">{{ $appointment->name }}</h3>
@@ -22,14 +22,18 @@
                         </div>
                         <div class="flex-col hidden md:flex">
                             <p class="text-sm text-slate-500">Budget</p>
-                            <h3 class="text-xl font-bold text-indigo-950">{{ $appointment->budget }}</h3>
+                            <h3 class="text-xl font-bold text-indigo-950">$
+                                {{ number_format($appointment->budget, 0, ',', '.') }}
+                            </h3>
                         </div>
                         <div class="flex-col hidden md:flex">
-                            <p class="text-sm text-slate-500">Date</p>
-                            <h3 class="text-xl font-bold text-indigo-950">{{ $appointment->created_at }}</h3>
+                            <p class="text-sm text-slate-500">Meeting Date</p>
+                            <h3 class="text-xl font-bold text-indigo-950">
+                                {{ $appointment->meeting_at->format('M d, Y') }}</h3>
                         </div>
                         <div class="flex-row items-center hidden md:flex gap-x-3">
-                            <a href=" " class="px-6 py-4 font-bold text-white bg-indigo-700 rounded-full">
+                            <a href="{{ route('admin.appointments.show', $appointment) }}"
+                                class="px-6 py-4 font-bold text-white bg-indigo-700 rounded-full">
                                 Details
                             </a>
                         </div>
@@ -38,7 +42,7 @@
                 @empty
                     <p>Data not found.</p>
                 @endforelse
-
+                {{ $appointments->links() }}
             </div>
         </div>
     </div>

@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\StoreAppointmentRequest;
+use App\Models\Appointment;
 use App\Models\CompanyAbout;
 use App\Models\CompanyStatistic;
 use App\Models\HeroSection;
@@ -9,6 +11,7 @@ use App\Models\OurPrinciple;
 use App\Models\OurTeam;
 use App\Models\Product;
 use App\Models\Testimonial;
+use Illuminate\Support\Facades\DB;
 
 class FrontController extends Controller
 {
@@ -35,5 +38,23 @@ class FrontController extends Controller
         $abouts = CompanyAbout::take(2)->get();
         $statistics = CompanyStatistic::orderByDesc('id')->take(4)->get();
         return view('front.about', compact('abouts', 'statistics'));
+    }
+
+    public function appointment()
+    {
+        $testimonials = Testimonial::take(4)->get();
+        $products = Product::get();
+        return view('front.appointment', compact('testimonials', 'products'));
+    }
+
+    public function appointmentStore(StoreAppointmentRequest $request)
+    {
+        DB::transaction(function () use ($request) {
+            $validated = $request->validated();
+
+            Appointment::create($validated);
+        });
+
+        return redirect()->route('front.appointment');
     }
 }

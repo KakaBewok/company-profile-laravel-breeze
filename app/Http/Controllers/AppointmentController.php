@@ -14,7 +14,7 @@ class AppointmentController extends Controller
      */
     public function index()
     {
-        $appointments = Appointment::orderByDesc('id')->paginate(10);
+        $appointments = Appointment::orderByDesc('id')->paginate(3);
         return view('admin.appointments.index', compact('appointments'));
     }
 
@@ -23,7 +23,7 @@ class AppointmentController extends Controller
      */
     public function create()
     {
-        return view('admin.appointments.create');
+        //
     }
 
     /**
@@ -31,13 +31,7 @@ class AppointmentController extends Controller
      */
     public function store(StoreAppointmentRequest $request)
     {
-        DB::transaction(function () use ($request) {
-            $validated = $request->validated();
-
-            Appointment::create($validated);
-        });
-
-        return redirect()->route('admin.appointments.index');
+        //
     }
 
     /**
@@ -45,7 +39,7 @@ class AppointmentController extends Controller
      */
     public function show(Appointment $appointment)
     {
-        //
+        return view('admin.appointments.details', compact('appointment'));
     }
 
     /**
